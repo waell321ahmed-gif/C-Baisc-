@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter number of subjects: ");
+        int subjects = int.Parse(Console.ReadLine());
+
+        double total = 0;
+
+        for (int i = 1; i <= subjects; i++)
+        {
+            Console.Write($"Enter grade for subject {i}: ");
+            double grade = double.Parse(Console.ReadLine());
+            total += grade;
+        }
+
+        double average = total / subjects;
+
+        Console.WriteLine("Average = " + average);
+
+        if (average < 20)
+            Console.WriteLine("Level: Freshman");
+        else if (average < 40)
+            Console.WriteLine("Level: Sophomore");
+        else if (average < 60)
+            Console.WriteLine("Level: Junior");
+        else
+            Console.WriteLine("Level: Senior");
+    }
+}
