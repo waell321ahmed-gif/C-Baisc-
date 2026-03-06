@@ -1,0 +1,151 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static double balance = 0;
+    static int accountNumber = 0;
+    static bool loggedIn = false;
+
+    static List<string> transactions = new List<string>();
+
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("\nATM MENU");
+            Console.WriteLine("1. Create Account");
+            Console.WriteLine("2. Login");
+            Console.WriteLine("3. Check Balance");
+            Console.WriteLine("4. Deposit");
+            Console.WriteLine("5. Withdraw");
+            Console.WriteLine("6. Transaction History");
+            Console.WriteLine("7. Exit");
+
+            Console.Write("Choose option: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    CreateAccount();
+                    break;
+
+                case 2:
+                    Login();
+                    break;
+
+                case 3:
+                    CheckBalance();
+                    break;
+
+                case 4:
+                    Deposit();
+                    break;
+
+                case 5:
+                    Withdraw();
+                    break;
+
+                case 6:
+                    ShowTransactions();
+                    break;
+
+                case 7:
+                    return;
+            }
+        }
+    }
+
+    static void CreateAccount()
+    {
+        Console.Write("Enter account number: ");
+        accountNumber = int.Parse(Console.ReadLine());
+
+        balance = 0;
+        Console.WriteLine("Account created successfully!");
+    }
+
+    static void Login()
+    {
+        Console.Write("Enter account number: ");
+        int acc = int.Parse(Console.ReadLine());
+
+        if (acc == accountNumber)
+        {
+            loggedIn = true;
+            Console.WriteLine("Login successful!");
+        }
+        else
+        {
+            Console.WriteLine("Invalid account number.");
+        }
+    }
+
+    static void CheckBalance()
+    {
+        if (!loggedIn)
+        {
+            Console.WriteLine("Please login first.");
+            return;
+        }
+
+        Console.WriteLine("Balance: " + balance);
+    }
+
+    static void Deposit()
+    {
+        if (!loggedIn)
+        {
+            Console.WriteLine("Please login first.");
+            return;
+        }
+
+        Console.Write("Enter amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        balance += amount;
+        transactions.Add("Deposited: " + amount);
+
+        Console.WriteLine("Deposit successful.");
+    }
+
+    static void Withdraw()
+    {
+        if (!loggedIn)
+        {
+            Console.WriteLine("Please login first.");
+            return;
+        }
+
+        Console.Write("Enter amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        if (amount > balance)
+        {
+            Console.WriteLine("Insufficient balance.");
+        }
+        else
+        {
+            balance -= amount;
+            transactions.Add("Withdrawn: " + amount);
+            Console.WriteLine("Withdraw successful.");
+        }
+    }
+
+    static void ShowTransactions()
+    {
+        if (!loggedIn)
+        {
+            Console.WriteLine("Please login first.");
+            return;
+        }
+
+        Console.WriteLine("Transaction History:");
+
+        foreach (var t in transactions)
+        {
+            Console.WriteLine(t);
+        }
+    }
+}
