@@ -1,0 +1,20 @@
+using System;
+using System.Diagnostics.Metrics;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("ادخل رقم لمعرفة موجب ام سالب");
+        int x = int.Parse(Console.ReadLine());
+
+        if (x % 2 == 0)
+        {
+            Console.WriteLine("even");
+        }
+        else 
+        {
+            Console.WriteLine("odd");
+        }
+    }
+ }
