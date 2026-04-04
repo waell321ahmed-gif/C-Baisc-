@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.Metrics;
 
-public class HelloWorld
+public class calculator
 {
     public static void Main(string[] args)
     {
