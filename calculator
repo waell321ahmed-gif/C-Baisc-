@@ -1,0 +1,40 @@
+using System;
+using System.Diagnostics.Metrics;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("ادخل رقمين");
+       int x = int.Parse(Console.ReadLine());
+       int y = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("ادخل علامة الحساب");
+        char operation = char.Parse(Console.ReadLine());
+
+        if (operation == '*')
+        {
+            Console.WriteLine(x * y);
+        }
+        else if (operation == '+')
+        {
+            Console.WriteLine(x + y);
+        }
+        else if (operation == '-')
+        {
+            Console.WriteLine(x - y);
+        }
+        else if (operation == '/')
+        {
+            if (y == 0)
+            {
+                Console.WriteLine("لا يمكن القسمة علي صفر");
+            }
+            else
+            {
+                Console.WriteLine(x / y);
+
+            }
+        }
+    }
+ }
