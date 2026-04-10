@@ -1,0 +1,29 @@
+
+
+using System;
+using System.Diagnostics.Metrics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+      List <int> list = new List<int>();
+        for (int i = 0; i < 5; i++)
+        {
+            int number = int.Parse(Console.ReadLine());
+
+
+            if (list.Contains(number))
+            {
+                Console.WriteLine("Enter Number Uniqe");
+                i--;
+            }
+            else
+            {
+                list.Add(number);
+            }
+        }
+        
+    }
+}
