@@ -1,0 +1,22 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Runtime.InteropServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int[] numbers = new int[5];
+        long calculate = 1;
+
+        for (int i = 0; i < numbers.Length; i++) 
+        {
+            numbers[i] = int.Parse(Console.ReadLine());
+             calculate *= numbers[i];
+            Console.WriteLine(calculate);
+        }
+        Console.WriteLine(calculate);
+
+    }
+}
