@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[,] theater = {
+            { 1, 1, 1, 1 },
+            { 1, 0, 1, 1 },
+            { 1, 1, 0, 1 },
+            { 1, 1, 1, 1 }
+        };
+
+        while (true)
+        {
+            Console.Write("Enter row (0-3): ");
+            int row = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter column (0-3): ");
+            int col = int.Parse(Console.ReadLine());
+
+            if (row >= 0 && row <= 3 && col >= 0 && col <= 3)
+            {
+                if (theater[row, col] == 1)
+                {
+                    Console.WriteLine("Success! Seat booked.");
+                    theater[row, col] = 0;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, seat is already taken.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid range! Please enter 0 to 3.");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
