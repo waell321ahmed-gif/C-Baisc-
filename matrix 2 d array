@@ -11,7 +11,10 @@ class Program
             { 1, 1, 1, 1 }
         };
 
-        while (true)
+        int totalSeats = 16;
+        int bookedCount = 2; // بدأنا بـ 2 لأن المصفوفة فيها صفرين أصلاً
+
+        while (bookedCount < totalSeats)
         {
             Console.Write("Enter row (0-3): ");
             int row = int.Parse(Console.ReadLine());
@@ -23,12 +26,13 @@ class Program
             {
                 if (theater[row, col] == 1)
                 {
-                    Console.WriteLine("Success! Seat booked.");
                     theater[row, col] = 0;
+                    bookedCount++;
+                    Console.WriteLine("Success! Seat booked.");
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, seat is already taken.");
+                    Console.WriteLine("This seat is already taken. Please pick another row and column.");
                 }
             }
             else
@@ -36,7 +40,10 @@ class Program
                 Console.WriteLine("Invalid range! Please enter 0 to 3.");
             }
 
+            Console.WriteLine($"Booked seats: {bookedCount}/{totalSeats}");
             Console.WriteLine();
         }
+
+        Console.WriteLine("All seats are booked! The theater is full.");
     }
 }
