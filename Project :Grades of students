@@ -1,0 +1,57 @@
+
+////1. تخزين البيانات (Storage)
+//المطلوب تخزين بيانات مجموعة من الطلاب، كل طالب له: اسم و قائمة درجات.
+
+//يجب أن تكون الدرجات قابلة للتخزين كأرقام عشرية.
+
+//2. العمليات الحسابية (Required Calculations)
+//Average Calculation: حساب المتوسط الحسابي لدرجات كل طالب.
+
+//Level Logic: تصنيف كل طالب لمستوى (String) بناءً على ناتج المتوسط حسب القواعد التالية:
+
+//من 0.0 إلى 20 ← Freshman
+
+//من 20 إلى 40 ← Sophomore
+
+//من 40 إلى 60 ← Junior
+
+//من 60 إلى 100 ← Senior
+
+//3. المدخلات (Input)
+//استقبال أسماء الطلاب من المستخدم.
+
+//استقبال درجات متعددة لكل طالب.
+
+//طريقة لإنهاء عملية الإدخال (مثلاً سؤال المستخدم أو رقم معين للتوقف).
+
+//4. المخرجات والتقرير (Output & Reporting)
+//عرض تقرير نهائي شامل يجمع:
+
+//أسماء جميع الطلاب.
+
+//متوسط درجات كل طالب.
+
+//المستوى (Level) المقابل لكل طالب.
+
+//يجب أن يكون التقرير بتنسيق (Formatted) يشبه الجدول (أعمدة واضحة).
+
+
+//يجب استخدام List لتخزين البيانات.
+
+//يجب الالتزام بـ Rule for Level Assignment المذكورة أعلاه.
+
+//المساحة ليك الآن للتنفيذ.. وريني هتبهرني إزاي في الكود!
+using System;
+using System.Diagnostics.Metrics;
+using System.Runtime.InteropServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+      Dictionary <string , List<double>> students = new Dictionary<string, List<double>>();
+
+        List<double> student = new List<double>();
+        
+    }
+}
