@@ -1,0 +1,157 @@
+    using System;
+    using System.Collections.Generic;
+
+    public class ATM
+    {
+        static List<string> userNames = new List<string>();
+        static List<int> passwords = new List<int>();
+        static List<int> accountNumbers = new List<int>();
+        static List<double> balances = new List<double>();
+
+        public static void Main(string[] args)
+        {
+            Random rd = new Random();
+
+            while (true)
+            {
+                Console.WriteLine("\nChoose: Sign in | Log in | Exit");
+                string choice = Console.ReadLine();
+
+                // Sign in
+                if (choice == "Sign in")
+                {
+                    Console.Write("Enter your Username: ");
+                    string name = Console.ReadLine();
+                    userNames.Add(name);
+
+                    // Password validation
+                    while (true)
+                    {
+                        Console.Write("Enter your password (4 numbers only): ");
+                        string passInput = Console.ReadLine();
+
+                        if (passInput.Length == 4 && int.TryParse(passInput, out int passValue))
+                        {
+                            passwords.Add(passValue);
+                            Console.WriteLine("Password accepted");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Pass must be exactly 4 numbers.");
+                        }
+                    }
+
+                    // Account ID
+                    int newID;
+                    do
+                    {
+                        newID = rd.Next(100000, 1000000);
+                    } while (accountNumbers.Contains(newID));
+
+                    accountNumbers.Add(newID);
+                    balances.Add(0); // بداية الرصيد = 0
+
+                    Console.WriteLine($"Account created -- Your ID is: {newID}");
+                }
+
+                // Log in
+                else if (choice == "Log in")
+                {
+                    Console.Write("Enter your Username: ");
+                    string loginName = Console.ReadLine();
+
+                    int index = userNames.IndexOf(loginName);
+
+                    if (index != -1)
+                    {
+                        Console.Write("Enter your password: ");
+                        if (int.TryParse(Console.ReadLine(), out int loginPass))
+                        {
+                            if (passwords[index] == loginPass)
+                            {
+                                Console.WriteLine($"Welcome {loginName}");
+                                bool userSession = true;
+
+                                while (userSession)
+                                {
+                                    Console.WriteLine("\n--- ATM Menu ---");
+                                    Console.WriteLine("1. Check Balance");
+                                    Console.WriteLine("2. Deposit");
+                                    Console.WriteLine("3. Withdraw");
+                                    Console.WriteLine("4. Logout");
+
+                                    string option = Console.ReadLine();
+
+                                    switch (option)
+                                    {
+                                        case "1": CheckBalance(index); break;
+                                        case "2": Deposit(index); break;
+                                        case "3": Withdraw(index); break;
+                                        case "4": userSession = false; break;
+                                        default: Console.WriteLine("Invalid option!"); break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wrong password!");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Username not found!");
+                    }
+                }
+
+                else if (choice == "Exit")
+                {
+                    break;
+                }
+            }
+        }
+
+        //  Check Balance
+        static void CheckBalance(int index)
+        {
+            Console.WriteLine($"Your balance is: {balances[index]}");
+        }
+
+        //  Deposit
+        static void Deposit(int index)
+        {
+            Console.Write("Enter amount to deposit: ");
+            if (double.TryParse(Console.ReadLine(), out double amount) && amount > 0)
+            {
+                balances[index] += amount;
+                Console.WriteLine("Deposit successful!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount!");
+            }
+        }
+
+        //  Withdraw
+        static void Withdraw(int index)
+        {
+            Console.Write("Enter amount to withdraw: ");
+            if (double.TryParse(Console.ReadLine(), out double amount) && amount > 0)
+            {
+                if (balances[index] >= amount)
+                {
+                    balances[index] -= amount;
+                    Console.WriteLine("Withdrawal successful!");
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient balance!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount!");
+            }
+        }
+    }
